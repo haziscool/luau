@@ -453,8 +453,6 @@ static void autocompleteProps(
     {
         autocompleteProps(module, typeArena, builtinTypes, rootTy, mt->table, indexType, nodes, result, seen);
 
-        // When the metatable is itself a MetatableType (multi-level metatable inheritance), getTableType
-        // unwraps it to the underlying table so its __index is still considered.
         const TableType* mtable =
             FFlag::LuauAutocompleteMetatableInheritance ? getTableType(follow(mt->metatable)) : get<TableType>(follow(mt->metatable));
         if (mtable)

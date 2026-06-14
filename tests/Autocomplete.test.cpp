@@ -5209,8 +5209,6 @@ TEST_CASE_FIXTURE(ACBuiltinsFixture, "autocomplete_props_through_metatable_typed
 {
     ScopedFastFlag sff{FFlag::LuauAutocompleteMetatableInheritance, true};
 
-    // `Meta` is a MetatableType, so `obj`'s metatable is itself a MetatableType rather than a plain table.
-    // Autocomplete should still resolve `baseProp` through `Meta`'s `__index`.
     check(R"(
         local Base = { baseProp = 5 }
         local Meta = setmetatable({ __index = Base }, {})

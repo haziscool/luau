@@ -1610,7 +1610,6 @@ TEST_CASE_FIXTURE(FragmentAutocompleteFixture, "autocomplete_props_through_metat
 {
     ScopedFastFlag sff{FFlag::LuauAutocompleteMetatableInheritance, true};
 
-    // `obj`'s metatable (`Meta`) is itself a MetatableType, so its `__index` should still be resolved.
     const std::string source = R"(
 local Base = { baseProp = 5 }
 local Meta = setmetatable({ __index = Base }, {})
